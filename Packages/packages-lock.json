@@ -18,6 +18,31 @@
       },
       "hash": "5b0f06dbe438a9c06947b96b45b13aa33d80018a"
     },
+    "com.github.asus4.onnxruntime": {
+      "version": "0.3.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.com"
+    },
+    "com.github.asus4.onnxruntime.unity": {
+      "version": "0.3.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.github.asus4.onnxruntime": "0.3.1"
+      },
+      "url": "https://registry.npmjs.com"
+    },
+    "com.github.asus4.texture-source": {
+      "version": "0.3.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.video": "1.0.0"
+      },
+      "url": "https://registry.npmjs.com"
+    },
     "com.unity.burst": {
       "version": "1.8.19",
       "depth": 2,
