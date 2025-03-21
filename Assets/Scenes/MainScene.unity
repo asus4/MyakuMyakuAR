@@ -592,7 +592,13 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: 8aafaa78fe944854997fef757ff4ba72, type: 3}
+        m_Name: _ARCameraTex
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: 8aafaa78fe944854997fef757ff4ba72, type: 3}
+        m_Name: _SegmentationTex
+        m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!1 &1026593163
@@ -957,10 +963,10 @@ GameObject:
   - component: {fileID: 1905954119}
   - component: {fileID: 1905954118}
   - component: {fileID: 1905954117}
+  - component: {fileID: 1905954120}
   - component: {fileID: 1905954116}
   - component: {fileID: 1905954115}
   - component: {fileID: 1905954114}
-  - component: {fileID: 1905954120}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1157,10 +1163,10 @@ MonoBehaviour:
   m_FocusMode: -1
   m_LightEstimationMode: -1
   m_AutoFocus: 1
-  m_ImageStabilization: 0
-  m_LightEstimation: 0
+  m_ImageStabilization: 1
+  m_LightEstimation: -1
   m_FacingDirection: 1
-  m_RenderMode: 0
+  m_RenderMode: 1
 --- !u!81 &1905954118
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1200,7 +1206,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.2
   far clip plane: 20
   field of view: 60
   orthographic: 0
@@ -1234,7 +1240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HumanSegmentationStencilMode: 1
   m_HumanSegmentationDepthMode: 1
-  m_EnvironmentDepthMode: 2
+  m_EnvironmentDepthMode: 3
   m_EnvironmentDepthTemporalSmoothing: 1
   m_OcclusionPreferenceMode: 0
 --- !u!1 &1908798201
@@ -1268,6 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20763c4dedab14851a1628b570f22823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfx: {fileID: 923284404}
 --- !u!4 &1908798203
 Transform:
   m_ObjectHideFlags: 0
@@ -1296,8 +1303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5e5635fba104ec29475e42f3b5a517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 11400000, guid: 314e9d8b0352a4c6c8d0daf321571ae9, type: 2}
-  sourceForEditor: {fileID: 11400000, guid: 314e9d8b0352a4c6c8d0daf321571ae9, type: 2}
+  source: {fileID: 11400000, guid: 753f66e47e63f4709b150a99ab6d1def, type: 2}
+  sourceForEditor: {fileID: 11400000, guid: 753f66e47e63f4709b150a99ab6d1def, type: 2}
   trimToScreenAspect: 1
   OnTexture:
     m_PersistentCalls:
@@ -1317,7 +1324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c198640d791f8444b808c35e6058e305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 1840921532545725537, guid: 2c462269925fd4987a9b3c20c4ac88e3, type: 3}
   modelFile:
     url: https://github.com/asus4/onnxruntime-unity-examples/releases/download/v0.2.7/yolo11n-seg-dynamic.onnx
     downloadLocation: 0
@@ -1334,40 +1340,11 @@ MonoBehaviour:
     visualizeSegmentationShader: {fileID: 7200000, guid: ea14041ec173d4e4b804d8c8e2eb8722, type: 3}
     maxDetectionCount: 50
     maskThreshold: 0.5
-  runBackground: 1
   detectionBoxPrefab: {fileID: 5453284232671403399, guid: f8f20ba3722174cd995b4e1ed42ec1f3, type: 3}
   detectionContainer: {fileID: 1563385081}
+  segmentationImage: {fileID: 2073957902}
   maxDetections: 20
-  OnSegmentationTexture:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2073957902}
-        m_TargetAssemblyTypeName: UnityEngine.UI.RawImage, UnityEngine.UI
-        m_MethodName: set_texture
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnSegmentationAspectChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2073957901}
-        m_TargetAssemblyTypeName: UnityEngine.UI.AspectRatioFitter, UnityEngine.UI
-        m_MethodName: set_aspectRatio
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  showDebugUI: 1
 --- !u!1 &2073957899
 GameObject:
   m_ObjectHideFlags: 0
