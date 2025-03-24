@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -630,10 +630,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.367
+    m_Value: 0.283
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.448
+    m_Value: 0.256
   rounded:
     m_OverrideState: 1
     m_Value: 0
@@ -755,16 +755,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   type:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 0.766
+    m_Value: 0.711
   response:
     m_OverrideState: 1
-    m_Value: 0.544
+    m_Value: 0.218
   texture:
     m_OverrideState: 1
     m_Value: {fileID: 0}

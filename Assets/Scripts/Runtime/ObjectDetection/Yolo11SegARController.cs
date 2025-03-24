@@ -124,6 +124,11 @@ namespace MyakuMyakuAR
             }
         }
 
+        public Rect ConvertToViewport(Rect rect)
+        {
+            return inference.ConvertToViewport(rect);
+        }
+
         async Awaitable RunAsync(Texture texture, CancellationToken cancellationToken)
         {
             try
