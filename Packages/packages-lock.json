@@ -35,7 +35,7 @@
       "url": "https://registry.npmjs.com"
     },
     "com.github.asus4.texture-source": {
-      "version": "0.3.3",
+      "version": "0.3.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
