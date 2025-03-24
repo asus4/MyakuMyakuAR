@@ -124,6 +124,8 @@ namespace Microsoft.ML.OnnxRuntime.Examples
         public NativeArray<Detection>.ReadOnly Detections => detectionList.AsReadOnly();
         public Texture SegmentationTexture => segmentation.Texture;
 
+        public Func<NativeArray<Detection>.ReadOnly, int> SegmentationFilterDelegate;
+
         // Profilers
         static readonly ProfilerMarker generateProposalsMarker = new($"{typeof(Yolo11Seg).Name}.GenerateProposals");
         static readonly ProfilerMarker segmentationMarker = new($"{typeof(Yolo11Seg).Name}.Segmentation");
@@ -213,13 +215,19 @@ namespace Microsoft.ML.OnnxRuntime.Examples
             proposalList.Sort();
             IDetection<Detection>.NMS(proposalList, detectionList, options.nmsThreshold);
 
+            // Post process
             segmentationMarker.Begin();
-            // [0] 1(batch), 8400(anchor), 116(data)
-            // [1: proto] shape: 1,32,160,160
             var output0Span = output0Transposed.AsReadOnlySpan();
             var output0Tensor = output0Span.AsSpan2D(output0Shape.zy);
             var output1 = outputs[1].GetTensorDataAsSpan<float>();
-            segmentation.Process(output0Tensor, output1, Detections);
+
+            ReadOnlySpan<Detection> detections = Detections;
+            if (SegmentationFilterDelegate != null)
+            {
+                int index = SegmentationFilterDelegate(Detections);
+                detections = detections.Slice(index, 1);
+            }
+            segmentation.Process(output0Tensor, output1, detections);
             segmentationMarker.End();
         }
 

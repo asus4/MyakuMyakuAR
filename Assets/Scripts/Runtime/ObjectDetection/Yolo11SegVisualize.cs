@@ -102,20 +102,20 @@ namespace Microsoft.ML.OnnxRuntime.Examples
         public void Process(
             ReadOnlySpan2D<float> output0Transposed,
             ReadOnlySpan<float> output1,
-            NativeArray<Yolo11Seg.Detection>.ReadOnly detections)
+            ReadOnlySpan<Yolo11Seg.Detection> detections)
         {
             const int MASK_SIZE = 32;
             int count = Math.Min(maskBuffer.count, detections.Length);
-            var detectionSpan = detections.AsReadOnlySpan()[..count];
+            detections = detections[..count];
 
             // Prepare mask data
             {
                 var maskSpan = maskData.AsSpan();
 
                 // Copy each detection mask
-                for (int i = 0; i < detectionSpan.Length; i++)
+                for (int i = 0; i < detections.Length; i++)
                 {
-                    var detection = detectionSpan[i];
+                    var detection = detections[i];
                     // Mask: 32 from the end
                     var mask = output0Transposed[detection.anchorId][^MASK_SIZE..];
                     mask.CopyTo(maskSpan.Slice(i * MASK_SIZE, MASK_SIZE));
@@ -125,7 +125,7 @@ namespace Microsoft.ML.OnnxRuntime.Examples
             // Set data to buffer
             segmentationBuffer.SetData(output1);
             maskBuffer.SetData(maskData, 0, 0, count * MASK_SIZE);
-            detectionBuffer.SetData(detectionSpan);
+            detectionBuffer.SetData(detections);
             compute.SetInt(_DetectionCount, count);
             compute.SetFloat(_MaskThreshold, options.maskThreshold);
 

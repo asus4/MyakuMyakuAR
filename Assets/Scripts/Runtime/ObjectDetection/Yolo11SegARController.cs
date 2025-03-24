@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading;
 using Microsoft.ML.OnnxRuntime.Examples;
 using TextureSource;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,7 +61,10 @@ namespace MyakuMyakuAR
         async void Start()
         {
             byte[] onnxFile = await modelFile.Load(destroyCancellationToken);
-            inference = new Yolo11Seg(onnxFile, options);
+            inference = new Yolo11Seg(onnxFile, options)
+            {
+                SegmentationFilterDelegate = SegmentationFilter,
+            };
 
             detectionBoxes = new TMPro.TMP_Text[maxDetections];
             detectionBoxOutline = new Image[maxDetections];
@@ -188,6 +192,11 @@ namespace MyakuMyakuAR
             {
                 detectionBoxes[i].gameObject.SetActive(false);
             }
+        }
+
+        int SegmentationFilter(NativeArray<Yolo11Seg.Detection>.ReadOnly detections)
+        {
+            return 0;
         }
     }
 }
