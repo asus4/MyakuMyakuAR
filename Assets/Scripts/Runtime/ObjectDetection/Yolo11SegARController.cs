@@ -199,9 +199,29 @@ namespace MyakuMyakuAR
             }
         }
 
+        static readonly Vector2 uvCenter = new(0.5f, 0.5f);
         int SegmentationFilter(NativeArray<Yolo11Seg.Detection>.ReadOnly detections)
         {
-            return 0;
+            if (detections.Length == 0)
+            {
+                return -1;
+            }
+
+            // Find center detection
+            int index = -1;
+            float minDistance = float.MaxValue;
+
+            for (int i = 0; i < detections.Length; i++)
+            {
+                Vector2 center = detections[i].rect.center;
+                float distance = Vector2.Distance(center, uvCenter);
+                if (distance < minDistance)
+                {
+                    index = i;
+                    minDistance = distance;
+                }
+            }
+            return index;
         }
     }
 }
