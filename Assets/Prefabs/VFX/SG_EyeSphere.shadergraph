@@ -919,7 +919,7 @@
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
-    "m_ZTestMode": 8,
+    "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
     "m_RenderFace": 2,
@@ -1245,7 +1245,7 @@
     "m_ObjectId": "69883f45dd5b4c3db85b29ca220e9b47",
     "m_Title": "Eye Ceter",
     "m_Position": {
-        "x": -1696.0,
+        "x": -1696.0001220703125,
         "y": 24.0
     }
 }
