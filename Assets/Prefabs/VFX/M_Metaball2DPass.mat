@@ -23,6 +23,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _ARCameraTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ARRgbDTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 7722ecceeecd444bdad66ddf16c66f45, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -54,10 +62,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0.5
-    - _BiasAB: 0.096
+    - _BiasAB: 0.212
+    - _BlendToAR: 0.902
     - _ColorMask: 15
-    - _MetaballEdge: 0.172
-    - _NormalStrength: 1.16
+    - _MetaballEdge: 0.2
+    - _MixNormalBlue: 1
+    - _NormalStrength: 1.79
+    - _ReflectionPower: 0.396
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0

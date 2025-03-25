@@ -1757,6 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfx: {fileID: 923284404}
+  postVfxMaterial: {fileID: 2100000, guid: 262ec0216c6cb4ff49569d817c8e4d6b, type: 2}
 --- !u!4 &1908798203
 Transform:
   m_ObjectHideFlags: 0

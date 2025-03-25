@@ -9,6 +9,9 @@ namespace MyakuMyakuAR
         [SerializeField]
         VisualEffect vfx;
 
+        [SerializeField]
+        Material postVfxMaterial;
+
         readonly int _SegmentationTex = Shader.PropertyToID("_SegmentationTex");
         readonly int _ARRgbDTex = Shader.PropertyToID("_ARRgbDTex");
         readonly int _SpawnUvMinMax = Shader.PropertyToID("_SpawnUvMinMax");
@@ -32,6 +35,7 @@ namespace MyakuMyakuAR
 
         void OnDetect(Yolo11SegARController yolo11Seg)
         {
+            postVfxMaterial.SetTexture(_ARRgbDTex, yolo11Seg.ARCameraTexture);
             vfx.SetTexture(_SegmentationTex, yolo11Seg.SegmentationTexture);
             vfx.SetTexture(_ARRgbDTex, yolo11Seg.ARCameraTexture);
 
