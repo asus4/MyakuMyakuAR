@@ -1107,7 +1107,7 @@ Canvas:
   m_GameObject: {fileID: 1883595295}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1905954119}
   m_PlaneDistance: 0.3
   m_PixelPerfect: 0
@@ -1115,7 +1115,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 1
   m_SortingLayerID: 0
@@ -1137,7 +1137,7 @@ RectTransform:
   - {fileID: 818843265}
   - {fileID: 1255038690}
   - {fileID: 374106765}
-  m_Father: {fileID: 1905954113}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1179,8 +1179,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1883595299}
+  m_Children: []
   m_Father: {fileID: 1026593164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1905954114
@@ -1358,7 +1357,7 @@ MonoBehaviour:
   m_LightEstimationMode: -1
   m_AutoFocus: 1
   m_ImageStabilization: 1
-  m_LightEstimation: -1
+  m_LightEstimation: 0
   m_FacingDirection: 1
   m_RenderMode: 1
 --- !u!81 &1905954118
@@ -1757,6 +1756,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 2090136483}
+  - {fileID: 1883595299}
   - {fileID: 835446691}
   - {fileID: 227761612}
   - {fileID: 1201457262}
