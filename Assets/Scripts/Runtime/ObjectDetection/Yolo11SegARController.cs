@@ -199,6 +199,10 @@ namespace MyakuMyakuAR
             }
         }
 
+        static readonly int[] bannedLabels =
+        {
+            60, // dining table
+        };
         static readonly Vector2 uvCenter = new(0.5f, 0.5f);
         int SegmentationFilter(NativeArray<Yolo11Seg.Detection>.ReadOnly detections)
         {
@@ -213,8 +217,15 @@ namespace MyakuMyakuAR
 
             for (int i = 0; i < detections.Length; i++)
             {
-                Vector2 center = detections[i].rect.center;
-                float distance = Vector2.Distance(center, uvCenter);
+                var detection = detections[i];
+
+                // Skip too big objects
+                if (Array.IndexOf(bannedLabels, detection.label) != -1)
+                {
+                    continue;
+                }
+
+                float distance = Vector2.Distance(detection.rect.center, uvCenter);
                 if (distance < minDistance)
                 {
                     index = i;
