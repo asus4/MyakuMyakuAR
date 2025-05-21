@@ -14,10 +14,15 @@ namespace MyakuMyakuAR
         [SerializeField]
         Material postVfxMaterial;
 
+        [SerializeField]
+        Vector3 targetViewport = new Vector3(0.5f, 0.5f, 10f);
+
+
         readonly int _SegmentationTex = Shader.PropertyToID("_SegmentationTex");
         readonly int _ARRgbDTex = Shader.PropertyToID("_ARRgbDTex");
         readonly int _SpawnUvMinMax = Shader.PropertyToID("_SpawnUvMinMax");
         readonly int _SpawnRate = Shader.PropertyToID("_SpawnRate");
+        readonly int _TargetPosition = Shader.PropertyToID("_TargetPosition");
 
         void OnEnable()
         {
@@ -35,11 +40,14 @@ namespace MyakuMyakuAR
             }
         }
 
+
         void OnDetect(Yolo11SegARController yolo11Seg)
         {
             postVfxMaterial.SetTexture(_ARRgbDTex, yolo11Seg.ARCameraTexture);
             vfx.SetTexture(_SegmentationTex, yolo11Seg.SegmentationTexture);
             vfx.SetTexture(_ARRgbDTex, yolo11Seg.ARCameraTexture);
+
+            vfx.SetVector3(_TargetPosition, Camera.main.ViewportToWorldPoint(targetViewport));
 
             var detections = yolo11Seg.Detections;
             if (detections.Length == 0)
@@ -57,6 +65,7 @@ namespace MyakuMyakuAR
                 // Debug.Log($"r: {r}, area: {area}");
                 vfx.SetFloat(_SpawnRate, area);
                 vfx.SetVector4(_SpawnUvMinMax, new Vector4(r.xMin, r.yMin, r.xMax, r.yMax));
+
             }
         }
 

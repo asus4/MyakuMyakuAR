@@ -65,9 +65,10 @@ Material:
     - _BiasAB: 0.212
     - _BlendToAR: 0.902
     - _ColorMask: 15
-    - _MetaballEdge: 0.2
+    - _Contrast: 1.4
+    - _MetaballEdge: 0.342
     - _MixNormalBlue: 1
-    - _NormalStrength: 1.79
+    - _NormalStrength: 1.85
     - _ReflectionPower: 0.396
     - _Stencil: 0
     - _StencilComp: 8
