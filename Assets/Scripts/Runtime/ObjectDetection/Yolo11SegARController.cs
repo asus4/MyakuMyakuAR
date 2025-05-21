@@ -63,7 +63,8 @@ namespace MyakuMyakuAR
             byte[] onnxFile = await modelFile.Load(destroyCancellationToken);
             inference = new Yolo11Seg(onnxFile, options)
             {
-                SegmentationFilterDelegate = SegmentationFilter,
+                // Stop filtering
+                // SegmentationFilterDelegate = SegmentationFilter,
             };
 
             detectionBoxes = new TMPro.TMP_Text[maxDetections];
